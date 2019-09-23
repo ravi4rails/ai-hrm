@@ -1,0 +1,42 @@
+
+<h1>Employees</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>DOB</th>
+      <th>City</th>
+      <th>Country</th>
+      <th>Job title</th>
+      <th>DOJ</th>
+      <th>Code</th>
+      <th>Is active</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employees.each do |employee| %>
+      <tr>
+        <td><%= employee.name %></td>
+        <td><%= employee.email %></td>
+        <td><%= employee.date_of_birth %></td>
+        <td><%= employee.city %></td>
+        <td><%= employee.country %></td>
+        <td><%= employee.job_title %></td>
+        <td><%= employee.date_of_joining %></td>
+        <td><%= employee.employee_code %></td>
+        <td><%= employee.is_active %></td>
+        <td><%= link_to 'Show', admin_employee_path(employee) %></td>
+        <td><%= link_to 'Edit', edit_admin_employee_path(employee) %></td>
+        <td><%= link_to 'Destroy', admin_employee_path(employee), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Employee', new_admin_employee_path %>

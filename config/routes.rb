@@ -7,8 +7,11 @@ Rails.application.routes.draw do
     unlocks:        'admins/unlocks',
     confirmations:  'admins/confirmations'
   }
+
   namespace :admin do
     get 'dashboard' => "sites#dashboard"
   	resources :departments
+    resources :employees
   end	
+
 end
