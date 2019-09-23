@@ -1,0 +1,32 @@
+<%= form_for [:admin, @department] do |form| %>
+ 
+  <% if @department.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@department.errors.count, "error") %> prohibited
+        this department from being saved:
+      </h2>
+      <ul>
+        <% @department.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control rounded-0" %>
+  </div>
+ 
+  <div class="form-group">
+    <%= form.label 'Established from' %>
+    <%= form.date_field :established_from, class: "form-control rounded-0" %>
+  </div>
+ 
+  <div class="actions">
+    <%= form.submit class: "btn btn-primary" %>
+    <%= link_to 'Back', admin_departments_path, class: "btn btn-outline-primary" %>
+  </div>
+ 
+<% end %>

@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+departments = Department.create([
+  { name: 'Operations', established_from: Date.today - 3.years }, 
+  { name: 'Human Recource', established_from: Date.today - 3.years }, 
+  { name: 'Accounts', established_from: Date.today - 3.years }, 
+  { name: 'Maintenence', established_from: Date.today - 3.years }, 
+  { name: 'Canteen', established_from: Date.today - 3.years }, 
+  { name: 'Stores', established_from: Date.today - 3.years } 
+])
