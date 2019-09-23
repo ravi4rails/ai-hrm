@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     confirmations:  'admins/confirmations'
   }
   namespace :admin do
+    get 'dashboard' => "sites#dashboard"
   	resources :departments
   end	
 end

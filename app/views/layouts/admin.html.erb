@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Admin | GreythrClone</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <%= javascript_include_tag 'admin', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body id="page-top">
+    <div id="wrapper">
+      <%= render "partials/admin_sidebar" %>
+      <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+          <%= render "partials/admin_header" %>
+          <div class="container-fluid">
+            <%= yield %>
+            <a class="scroll-to-top rounded" href="#page-top">
+              <i class="fas fa-angle-up"></i>
+            </a>
+          </div>
+        </div>
+        <%= render "partials/admin_footer" %>
+      </div>
+      <%= render "partials/logout_popup" %>
+    </div>
+    <%= javascript_include_tag 'admin/sb-admin-2.min', 'data-turbolinks-track': 'reload' %>
+  </body>
+</html>

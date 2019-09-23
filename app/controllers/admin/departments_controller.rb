@@ -25,7 +25,7 @@ class Admin::DepartmentsController < AdminController
 
   def update
     if @department.update(department_params)
-      redirect_to redirect_to admin_department_path(@department), notice: "Department has been updated successfully."
+      redirect_to admin_department_path(@department), notice: "Department has been updated successfully."
     else
       render 'edit'
     end    

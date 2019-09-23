@@ -1,0 +1,9 @@
+//= require rails-ujs
+//= require jquery3
+//= require popper
+//= require bootstrap
+//= require admin/jquery.easing.min
+//= require admin/moment.min
+//= require admin/bootstrap-datetimepicker.min
+//= require jquery_validation
+//= require admin/department_form_validation
