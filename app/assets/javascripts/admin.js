@@ -7,3 +7,4 @@
 //= require admin/bootstrap-datetimepicker.min
 //= require jquery_validation
 //= require admin/department_form_validation
+//= require admin/employee_form_validation
