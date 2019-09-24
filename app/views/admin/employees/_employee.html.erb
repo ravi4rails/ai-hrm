@@ -1,0 +1,24 @@
+<div class="col-12 col-md-3">
+  <div class="card mt-4">
+    <div class="card-body">
+      <div class="text-center">
+        <%= image_tag "employee.jpg", class: "rounded-circle image" %>
+        <h5 class="font-weight-bold mt-3"><%= employee.name %></h5>
+        <h6 data-toggle="tooltip" data-placement="top" title="<%= employee.address.capitalize %>"><%= truncate(employee.address.capitalize, length: 20) %></h6>
+        <h5 class="text-dark"><%= employee.country %></h5>      
+      </div>
+    </div>
+  </div>      
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+  });  
+</script>
+
+<style type="text/css">
+  .image{
+    width: 100px;
+  }
+</style>

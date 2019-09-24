@@ -5,7 +5,8 @@ class Admin::EmployeesController < AdminController
     @employees = Employee.all
   end
 
-  def show; end
+  def show
+  end
 
   def new
     @employee = Employee.new

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_23_152233) do
+ActiveRecord::Schema.define(version: 2019_09_24_114650) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(version: 2019_09_23_152233) do
     t.boolean "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "department_id"
+    t.index ["department_id"], name: "index_employees_on_department_id"
   end
 
 end

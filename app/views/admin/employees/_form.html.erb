@@ -133,6 +133,10 @@
       <%= form.label :employee_code %>
       <%= form.text_field :employee_code, class: "form-control rounded-0" %>
     </div>
+    <div class="form-group col-md-6">
+      <%= form.label :select_department %>
+      <%= form.select :department_id, options_for_select(Department.all.map {|department| [department.name, department.id]}, selected: form.object.try(:department_id)), { include_blank: "Select Department" }, { class: "form-control form-control-line", required: true } %>
+    </div>
   </div>
 
   <div class="form-group">
