@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'dashboard' => "sites#dashboard"
   	resources :departments
-    resources :employees
+    resources :employees do
+      collection { post :import }
+    end  
   end	
-
+  
 end

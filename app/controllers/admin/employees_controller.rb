@@ -12,6 +12,11 @@ class Admin::EmployeesController < AdminController
     @employee = Employee.new
   end
 
+  def import
+    Employee.import(params[:file])
+    redirect_to admin_employees_path(@employee), notice: "Employee imported."
+  end
+
   def edit; end
 
   def create

@@ -12,4 +12,10 @@ class Employee < ApplicationRecord
             :date_of_joining, :gender, :marital_status, :blood_group, :religion,
             :employee_code, presence: true
 
+
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      Employee.create! row.to_hash
+    end
+  end    
 end
