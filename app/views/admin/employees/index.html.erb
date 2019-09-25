@@ -1,11 +1,16 @@
 <div class="container">
+  <div class="card mt-3">
+    <div class="card-body">
+      <%= render 'admin/employees/index/filter' %>      
+    </div>
+  </div>
   <div class="row">
     <div class="col-md-12">
       <div class="card mt-5 mb-5">
         <div class="card-body">
           <div class="row">
             <div class="col-md-6">
-              <h1>Employees</h1>        
+              <h1>Listing Employees</h1>        
             </div>
             <div class="col-md-6">
               <%= link_to 'New Employee', new_admin_employee_path, class: "btn btn-primary float-right" %>              

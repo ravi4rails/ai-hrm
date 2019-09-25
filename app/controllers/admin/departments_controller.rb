@@ -1,9 +1,11 @@
 class Admin::DepartmentsController < AdminController
-
   before_action :set_department, only: [:edit, :show, :destroy, :update]
+  before_action :authenticate_admin!
 
   def index
     @departments = Department.all
+    @q = Department.ransack(params[:q])
+    @departments = @q.result(distinct: true)
   end
 
   def show; end

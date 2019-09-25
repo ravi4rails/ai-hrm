@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  root 'admin/sites#dashboard'
   devise_for :admins, controllers: {
     sessions:       'admins/sessions',
     registrations:  'admins/registrations',
@@ -9,11 +9,9 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    get 'dashboard' => "sites#dashboard"
-  	resources :departments
+    resources :departments
     resources :employees do
       collection { post :import }
     end  
-  end	
-  
+  end 
 end

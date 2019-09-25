@@ -17,5 +17,5 @@ class Employee < ApplicationRecord
     CSV.foreach(file.path, headers: true) do |row|
       Employee.create! row.to_hash
     end
-  end    
+  end     
 end

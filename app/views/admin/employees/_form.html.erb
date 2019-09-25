@@ -62,33 +62,33 @@
   <div class="row">    
     <div class="form-group col-md-6">
       <%= form.label :address %>
-      <%= form.text_field :address, class: "form-control rounded-0" %>
+      <%= form.text_field :address, class: "form-control rounded-0", placeholder: "Employee Address", required: true, id: "autocomplete", onFocus: "geolocate()" %>
     </div>
     <div class="form-group col-md-6">
       <%= form.label :city %>
-      <%= form.text_field :city, class: "form-control rounded-0" %>
+      <%= form.text_field :city, class: "form-control rounded-0",required: true, id: :locality, disabled: true %>
     </div>
   </div>
 
   <div class="row">
     <div class="form-group col-md-6">
       <%= form.label :state %>
-      <%= form.text_field :state, class: "form-control rounded-0" %>
+      <%= form.text_field :state, class: "form-control rounded-0",id: :administrative_area_level_1, disabled: true %>
     </div>    
     <div class="form-group col-md-6">
       <%= form.label :country %>
-      <%= form.text_field :country, class: "form-control rounded-0" %>
+      <%= form.text_field :country, class: "form-control rounded-0", id: :country, disabled: true  %>
     </div>
   </div>
   
   <div class="row">
     <div class="form-group col-md-6">
       <%= form.label :zipcode %>
-      <%= form.text_field :zipcode, class: "form-control rounded-0" %>
+      <%= form.text_field :zipcode, class: "form-control rounded-0", id: :postal_code, disabled: true %>
     </div>
     <div class="form-group col-md-6">
-      <%= form.label :profile_photo %>
-      <%= form.text_field :profile_photo, class: "form-control rounded-0" %>
+      <%= form.label :profile_photo %><br>
+      <%= form.file_field :profile_photo %>
     </div>    
   </div>
 
@@ -149,3 +149,53 @@
     <%= link_to 'Back', admin_employees_path, class: "btn btn-outline-primary" %>
   </div>
 <% end %>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFBYM37YGMTdgkEp9fipPljSjprTDZL8Y&libraries&libraries=places&callback=initAutocomplete"
+    async defer></script>
+<script type="text/javascript">
+  var placeSearch, autocomplete;
+  var componentForm = {
+  locality: 'long_name',
+  administrative_area_level_1: 'long_name',
+  country: 'long_name',
+  postal_code: 'short_name'
+};
+function initAutocomplete() {
+  autocomplete = new google.maps.places.Autocomplete(
+      /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+      {types: ['geocode']});
+  autocomplete.addListener('place_changed', fillInAddress);
+}
+function fillInAddress() {
+  var place = autocomplete.getPlace();
+  $("#latitude").val(place.geometry.location.lat());
+  $("#longitude").val(place.geometry.location.lng());
+  for (var component in componentForm) {
+    document.getElementById(component).value = '';
+    document.getElementById(component).disabled = false;
+  }
+  for (var i = 0; i < place.address_components.length; i++) {
+    var addressType = place.address_components[i].types[0];
+    if (componentForm[addressType]) {
+      var val = place.address_components[i][componentForm[addressType]];
+      document.getElementById(addressType).value = val;
+    }
+  }
+}
+function geolocate() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var geolocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      var circle = new google.maps.Circle({
+        center: geolocation,
+        radius: position.coords.accuracy
+      });
+      autocomplete.setBounds(circle.getBounds());
+    });
+  }
+}
+</script>
