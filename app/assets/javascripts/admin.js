@@ -8,3 +8,5 @@
 //= require jquery_validation
 //= require admin/department_form_validation
 //= require admin/employee_form_validation
+//= require admin/educational_credential_form_validation
+//= require admin/employee_relative_form_validation
