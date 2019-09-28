@@ -1,115 +1,171 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-4 offset-4 text-center">
+      <div class="card rounded-0 mb-5">
+        <div class="card-body">
+          <p>
+            <strong>Profile photo:</strong>
+            <%= @employee.profile_photo %>
+          </p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @employee.first_name %>
-</p>
+          <p>
+            <strong>Is active:</strong>
+            <%= @employee.is_active %>
+          </p>
+          <%= link_to 'Edit', edit_admin_employee_path(@employee), class: "btn btn-warning btn-sm" %> 
+          <%= link_to 'Back', admin_employees_path, class: "btn btn-info btn-sm" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 mx-md-auto">
+      <div class="card rounded-0">
+        <div class="card-header">
+          <h5 class="">Basic Profile</h5>
+        </div>
+        <div class="card-body">
+          <p>
+            <strong>Name:</strong>
+            <%= @employee.name.titleize %>
+          </p>
 
-<p>
-  <strong>Middle name:</strong>
-  <%= @employee.middle_name %>
-</p>
+          <p>
+            <strong>Email:</strong>
+            <%= @employee.email %>
+          </p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @employee.last_name %>
-</p>
+          <p>
+            <strong>Date of birth:</strong>
+            <%= @employee.date_of_birth %>
+          </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @employee.email %>
-</p>
+          <p>
+            <strong>Personal contact:</strong>
+            <%= @employee.personal_contact %>
+          </p>
 
-<p>
-  <strong>Date of birth:</strong>
-  <%= @employee.date_of_birth %>
-</p>
+          <p>
+            <strong>Emergency contact:</strong>
+            <%= @employee.emergency_contact %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mx-md-auto">
+      <div class="card mb-5">
+        <div class="card-header">
+          <h5>Address</h5>
+        </div>       
+        <div class="card-body">
+          <p>
+            <strong>Address:</strong>
+            <%= @employee.address %>
+          </p>
 
-<p>
-  <strong>Personal contact:</strong>
-  <%= @employee.personal_contact %>
-</p>
+          <p>
+            <strong>City:</strong>
+            <%= @employee.city %>
+          </p>
 
-<p>
-  <strong>Emergency contact:</strong>
-  <%= @employee.emergency_contact %>
-</p>
+          <p>
+            <strong>State:</strong>
+            <%= @employee.state %>
+          </p>
 
-<p>
-  <strong>Profile photo:</strong>
-  <%= @employee.profile_photo %>
-</p>
+          <p>
+            <strong>Country:</strong>
+            <%= @employee.country %>
+          </p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @employee.address %>
-</p>
+          <p>
+            <strong>Zipcode:</strong>
+            <%= @employee.zipcode %>
+          </p>
+        </div> 
+      </div>
+    </div>
+  </div>  
+  <div class="row">
+    <div class="col-md-6 mx-md-auto">
+      <div class="card">
+        <div class="card-header">
+          <h5>About Job</h5>
+        </div>
+        <div class="card-body">
+          <p>
+            <strong>Job title:</strong>
+            <%= @employee.job_title %>
+          </p>
 
-<p>
-  <strong>City:</strong>
-  <%= @employee.city %>
-</p>
+          <p>
+            <strong>Job description:</strong>
+            <%= @employee.job_description %>
+          </p>
 
-<p>
-  <strong>State:</strong>
-  <%= @employee.state %>
-</p>
+          <p>
+            <strong>Date of joining:</strong>
+            <%= @employee.date_of_joining %>
+          </p>
 
-<p>
-  <strong>Country:</strong>
-  <%= @employee.country %>
-</p>
+          <p>
+            <strong>Employee code:</strong>
+            <%= @employee.employee_code %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mx-md-auto">
+      <div class="card">
+        <div class="card-header">
+          <h5>Info</h5>
+        </div>
+        <div class="card-body">
+          <p>
+            <strong>Gender:</strong>
+            <%= @employee.gender %>
+          </p>
 
-<p>
-  <strong>Zipcode:</strong>
-  <%= @employee.zipcode %>
-</p>
+          <p>
+            <strong>Marital status:</strong>
+            <%= @employee.marital_status %>
+          </p>
 
-<p>
-  <strong>Job title:</strong>
-  <%= @employee.job_title %>
-</p>
+          <p>
+            <strong>Blood group:</strong>
+            <%= @employee.blood_group %>
+          </p>
 
-<p>
-  <strong>Job description:</strong>
-  <%= @employee.job_description %>
-</p>
-
-<p>
-  <strong>Date of joining:</strong>
-  <%= @employee.date_of_joining %>
-</p>
-
-<p>
-  <strong>Gender:</strong>
-  <%= @employee.gender %>
-</p>
-
-<p>
-  <strong>Marital status:</strong>
-  <%= @employee.marital_status %>
-</p>
-
-<p>
-  <strong>Blood group:</strong>
-  <%= @employee.blood_group %>
-</p>
-
-<p>
-  <strong>Religion:</strong>
-  <%= @employee.religion %>
-</p>
-
-<p>
-  <strong>Employee code:</strong>
-  <%= @employee.employee_code %>
-</p>
-
-<p>
-  <strong>Is active:</strong>
-  <%= @employee.is_active %>
-</p>
-
-<%= link_to 'Edit', edit_admin_employee_path(@employee), class: "btn btn-warning btn-sm" %> 
-<%= link_to 'Back', admin_employees_path, class: "btn btn-info btn-sm" %>
-
+          <p>
+            <strong>Religion:</strong>
+            <%= @employee.religion %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card mt-4">
+    <div class="card-header">
+      <h5>Eductaional Credentials</h5>
+    </div>
+  </div>        
+  <div class="row"> 
+    <div class="col-md-12">
+      <div class="row">
+        <%= render @employee.educational_credentials %>        
+      </div>
+    </div>
+  </div>
+  <div class="card mt-4">
+    <div class="card-header">
+      <h5>Employee Relative</h5>
+    </div>
+  </div>
+  <div class="row"> 
+    <div class="col-md-12">
+      <div class="row">
+        <%= render @employee.employee_relatives %>        
+      </div>
+    </div>
+  </div>
+</div>

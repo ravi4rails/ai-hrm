@@ -1,0 +1,47 @@
+<%= form_for [:admin, @educational_credential], html: {id: 'educational_credential_form'} do |form| %>
+ 
+  <% if @educational_credential.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@educational_credential.errors.count, "error") %> prohibited
+        this educational_credential from being saved:
+      </h2>
+      <ul>
+        <% @educational_credential.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <div class="form-group">
+    <%= form.label :course %>
+    <%= form.text_field :course, class: "form-control rounded-0" %>
+  </div>
+ 
+  <div class="form-group">
+    <%= form.label :board_or_university %>
+    <%= form.text_field :board_or_university, class: "form-control rounded-0" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :city %>
+    <%= form.text_field :city, class: "form-control rounded-0" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :marks %>
+    <%= form.text_field :marks, class: "form-control rounded-0" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :select_employee %>
+    <%= form.select :employee_id, options_for_select(Employee.all.map {|employee| [employee.name, employee.id]}, selected: form.object.try(:employee)), { include_blank: "Select Employee" }, { class: "form-control form-control-line", required: true } %>
+  </div>
+ 
+  <div class="actions">
+    <%= form.submit class: "btn btn-primary" %>
+    <%= link_to 'Back', admin_educational_credentials_path, class: "btn btn-outline-primary" %>
+  </div>
+ 
+<% end %>

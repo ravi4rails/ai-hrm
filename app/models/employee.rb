@@ -1,6 +1,8 @@
 class Employee < ApplicationRecord
 
   belongs_to :department, optional: true
+  has_many :educational_credentials
+  has_many :employee_relatives
 
   def name
     "#{self.first_name} #{self.middle_name} #{self.last_name}".strip

@@ -13,7 +13,10 @@
               <h1>Listing Employees</h1>        
             </div>
             <div class="col-md-6">
-              <%= link_to 'New Employee', new_admin_employee_path, class: "btn btn-primary float-right" %>              
+              <div class="float-right">
+                <%= link_to 'Bulk Import', admin_bulk_import_path, class: "btn btn-primary" %> 
+                <%= link_to 'New Employee', new_admin_employee_path, class: "btn btn-primary" %>
+              </div>              
             </div>
           </div>
         </div>
@@ -66,18 +69,4 @@
       </div>
     </div>
   </div>
-</div>
-
-<div class="container">
-  <div class="card mt-4">
-    <div class="card-header">
-      <h2 class="card-heading">Import Employees</h2>      
-    </div>    
-    <div class="card-body">
-      <%= form_tag import_admin_employees_path, multipart: true do %>
-       <%= file_field_tag :file %>
-       <%= submit_tag "Import", class: "btn btn-secondary btn-sm" %>
-      <% end %>
-    </div>  
-  </div>  
 </div>

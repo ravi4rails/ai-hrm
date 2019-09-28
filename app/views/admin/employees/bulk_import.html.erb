@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="card mt-4">
+    <div class="card-header">
+      <h2 class="card-heading">Import Employees</h2>      
+    </div>    
+    <div class="card-body">
+      <%= form_tag import_admin_employees_path, multipart: true do %>
+       <%= file_field_tag :file %>
+       <%= submit_tag "Import", class: "btn btn-secondary btn-sm" %>
+      <% end %>
+    </div>  
+  </div>  
+</div>

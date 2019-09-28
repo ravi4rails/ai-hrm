@@ -8,8 +8,7 @@ class Admin::EmployeesController < AdminController
     @employees = @q.result(distinct: true)
   end
 
-  def show
-  end
+  def show;  end
 
   def new
     @employee = Employee.new
@@ -19,6 +18,8 @@ class Admin::EmployeesController < AdminController
     Employee.import(params[:file])
     redirect_to admin_employees_path(@employee), notice: "Employee imported."
   end
+
+  def bulk_import; end
 
   def edit; end
 
