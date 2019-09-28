@@ -1,24 +1,30 @@
-<p>
-  <strong>Name:</strong>
-  <%= @employee_relative.name %>
-</p>
- 
-<p>
-  <strong>Contact:</strong>
-  <%= @employee_relative.contact %>
-</p>
- 
-<p>
-  <strong>Address:</strong>
-  <%= @employee_relative.address %>
-</p>
- 
-<p>
-  <strong>Relation:</strong>
-  <%= @employee_relative.relation %>
-</p>
+<div class="row">
+  <div class="col-12">
+    <div class="card rounded-0">
+      <div class="card-body">        
+        <p>
+          <strong>Name:</strong>
+          <%= @employee_relative.name %>
+        </p>
+         
+        <p>
+          <strong>Contact:</strong>
+          <%= @employee_relative.contact %>
+        </p>
+         
+        <p>
+          <strong>Address:</strong>
+          <%= @employee_relative.address %>
+        </p>
+         
+        <p>
+          <strong>Relation:</strong>
+          <%= @employee_relative.relation %>
+        </p>         
+        <%= link_to 'Edit', edit_admin_employee_relative_path(@employee_relative), class: "btn btn-warning btn-sm" %>  
+        <%= link_to 'Back', admin_employee_relatives_path, class: "btn btn-info btn-sm" %>
+      </div>
+    </div>
+  </div>
+</div>
 
-
- 
-<%= link_to 'Edit', edit_admin_employee_relative_path(@employee_relative), class: "btn btn-warning btn-sm" %>  
-<%= link_to 'Back', admin_employee_relatives_path, class: "btn btn-info btn-sm" %>

@@ -4,8 +4,7 @@
       <div class="card rounded-0 mb-5">
         <div class="card-body">
           <p>
-            <strong>Profile photo:</strong>
-            <%= @employee.profile_photo %>
+            <%= image_tag 'male.jpg', class: "image"%>
           </p>
 
           <p>
@@ -169,3 +168,9 @@
     </div>
   </div>
 </div>
+
+<style type="text/css">
+  .image{
+    width: 100px;
+  }
+</style>

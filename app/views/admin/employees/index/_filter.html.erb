@@ -1,64 +1,48 @@
 <%= search_form_for @q, url: :admin_employees, method: :get do |f| %>
   <div class="row">
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-3">
       <%= f.label :first_name %>
-      <%= f.search_field :first_name_cont, class: "form-control rounded-0" %>      
+      <%= f.search_field :first_name_cont, class: "form-control rounded-0" %>
     </div>
 
-    <div class="form-group col-md-6">
-      <%= f.label :middle_name %>
-      <%= f.search_field :middle_name_cont, class: "form-control rounded-0" %>   
-    </div>
-  </div>
-  <div class="row">
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-3">
       <%= f.label :last_name %>
-      <%= f.search_field :last_name_cont, class: "form-control rounded-0" %>      
+      <%= f.search_field :last_name_cont, class: "form-control rounded-0" %>
     </div>    
 
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-3">
       <%= f.label :email %>
-      <%= f.search_field :email_cont, class: "form-control rounded-0" %>      
-    </div>    
-  </div>
-  
-  <div class="row">
-    <div class="form-group col-md-6">
-      <%= f.label :address %>
-      <%= f.search_field :address_cont, class: "form-control rounded-0" %>      
+      <%= f.search_field :email_cont, class: "form-control rounded-0" %>     
     </div>
 
-    <div class="form-group col-md-6">
-      <%= f.label :city %>
-      <%= f.search_field :city_cont, class: "form-control rounded-0" %>      
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="form-group col-md-6">
-      <%= f.label :state %>
-      <%= f.search_field :state_cont, class: "form-control rounded-0" %>      
-    </div>
-
-    <div class="form-group col-md-6">
-      <%= f.label :country %>
-      <%= f.search_field :country_cont, class: "form-control rounded-0" %>      
-    </div>    
-  </div>
-
-  <div class="row">
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-3">
       <%= f.label :employee_code %>
       <%= f.search_field :employee_code_cont, class: "form-control rounded-0" %>      
     </div>
-
-    <div class="form-group col-md-6">
-      <%= f.label :job_title %>
-      <%= f.search_field :job_title_cont, class: "form-control rounded-0" %>      
-    </div>    
   </div>
 
+  <div class="row">
+    <div class="form-group col-md-3">
+      <%= f.label :city %>
+      <%= f.search_field :city_cont, class: "form-control rounded-0" %>      
+    </div>
 
+    <div class="form-group col-md-3">
+      <%= f.label :state %>
+      <%= f.search_field :state_cont, class: "form-control rounded-0" %> 
+    </div>
+
+    <div class="form-group col-md-3">
+      <%= f.label :country %>
+      <%= f.search_field :country_cont, class: "form-control rounded-0" %>  
+    </div>    
+
+    <div class="form-group col-md-3">
+      <%= f.label :job_title %>
+      <%= f.search_field :job_title_cont, class: "form-control rounded-0" %>
+    </div>    
+  </div>
+  
   <div class="actions">
     <%= submit_tag 'Search',  class: 'btn btn-primary' %>
     <%= link_to 'Reset', admin_employees_path, class: 'btn btn-secondary' %>
