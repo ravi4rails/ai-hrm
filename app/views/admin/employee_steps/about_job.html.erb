@@ -1,25 +1,38 @@
-<%= render 'partials/flash'%>
-<%= render :layout => 'form' do |form| %>   
-  <div class="row">    
-    <div class="form-group col-md-6">
-      <%= form.label :job_title %>
-      <%= form.text_field :job_title, class: "form-control rounded-0" %>
-    </div>
-
-    <div class="form-group col-md-6">
-      <%= form.label :job_description %>
-      <%= form.text_area :job_description, class: "form-control rounded-0" %>
-    </div>
-  </div>
-
+<div class="container">
   <div class="row">
-    <div class="form-group col-md-6">
-      <%= form.label :date_of_joining %>
-      <%= form.date_field :date_of_joining, class: "form-control rounded-0" %>
-    </div>
-    <div class="form-group col-md-6">
-      <%= form.label :employee_code %>
-      <%= form.text_field :employee_code, class: "form-control rounded-0" %>
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-heading">Basic profile</h5>
+        </div>
+        <div class="card-body">
+          <%= render 'partials/flash'%>
+          <%= render :layout => 'form' do |form| %>   
+            <div class="row">    
+              <div class="form-group col-md-6">
+                <%= form.label :job_title %>
+                <%= form.text_field :job_title, class: "form-control rounded-0" %>
+              </div>
+
+              <div class="form-group col-md-6">
+                <%= form.label :job_description %>
+                <%= form.text_area :job_description, class: "form-control rounded-0" %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-md-6">
+                <%= form.label :date_of_joining %>
+                <%= form.date_field :date_of_joining, class: "form-control rounded-0" %>
+              </div>
+              <div class="form-group col-md-6">
+                <%= form.label :employee_code %>
+                <%= form.text_field :employee_code, class: "form-control rounded-0" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
-<% end %>
+</div>
