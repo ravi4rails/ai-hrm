@@ -40,9 +40,9 @@
             <% @employees.each do |employee| %>
               <tr>
                 <td><%= employee.name %></td>
-                <td><%= employee.city.titleize %></td>
-                <td><%= employee.country.titleize %></td>
-                <td><%= employee.job_title.titleize %></td>
+                <td><%= employee.city %></td>
+                <td><%= employee.country %></td>
+                <td><%= employee.job_title %></td>
                 <td><%= employee.date_of_joining %></td>
                 <td><%= employee.employee_code %></td>
                 <td>

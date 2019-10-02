@@ -8,8 +8,6 @@ class Admin::EmployeesController < AdminController
     @employees = @q.result(distinct: true)
   end
 
-  def show;  end
-
   def new
     @employee = Employee.new
   end
@@ -25,27 +23,20 @@ class Admin::EmployeesController < AdminController
 
   def create
     @employee = Employee.new(employee_params)
-
-    respond_to do |format|
-      if @employee.save
-        format.html { redirect_to admin_employee_path(@employee), notice: 'Employee was successfully created.' }
-        format.json { render :show, status: :created, location: @employee }
-      else
-        format.html { render :new }
-        format.json { render json: @employee.errors, status: :unprocessable_entity }
-      end
+    if @employee.save
+      session[:employee_id] = @employee.id
+      redirect_to admin_employee_steps_path
+    else
+      render :new 
     end
   end
 
   def update
-    respond_to do |format|
-      if @employee.update(employee_params)
-        format.html { redirect_to admin_employee_path(@employee), notice: 'Employee was successfully updated.' }
-        format.json { render :show, status: :ok, location: @employee }
-      else
-        format.html { render :edit }
-        format.json { render json: @employee.errors, status: :unprocessable_entity }
-      end
+    if @employee.update(employee_params)
+      session[:employee_id] = @employee.id
+      redirect_to admin_employee_steps_path
+    else
+      render :edit 
     end
   end
 

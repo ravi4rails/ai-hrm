@@ -1,4 +1,4 @@
-<%= form_for [:admin, @employee], html: {id: 'employee_form'} do |form| %>
+<%= form_for @employee, url: :wizard do |form| %>
 
   <% if @employee.errors.any? %>
     <div id="error_explanation">
@@ -11,17 +11,6 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="row">
-    <div class="form-group col-md-6">
-      <%= form.label :profile_photo %><br>
-      <%= form.file_field :profile_photo %>
-    </div>  
-    <div class="form-group col-md-6">
-      <%= form.label :is_active %>
-      <%= form.check_box :is_active %>
-    </div>   
-  </div>
   
   <!-- <div class="row">
     <div class="form-group col-md-6">
@@ -156,9 +145,11 @@
     <%#= form.check_box :is_active %>
   </div>    --> 
 
+  <%= yield form %>
+
   <div class="actions">
-    <%= form.submit class: "btn btn-primary" %>
-    <%= link_to 'Back', admin_employees_path, class: "btn btn-outline-primary" %>
+    <%= form.submit "Continue" %>
+    or <%= link_to "skip this step", next_wizard_path %>
   </div>
 <% end %>
 

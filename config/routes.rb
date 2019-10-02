@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :employee_relatives
     resources :educational_credentials
     resources :departments
+    resources :employee_steps
     resources :employees do
       collection { post :import }
     end  

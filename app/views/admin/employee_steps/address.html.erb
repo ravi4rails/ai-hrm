@@ -1,0 +1,29 @@
+<%= render :layout => 'form' do |form| %>   
+  <div class="row">    
+    <div class="form-group col-md-6">
+      <%= form.label :address %>
+      <%= form.text_field :address, class: "form-control rounded-0", placeholder: "Employee Address", required: true, id: "autocomplete", onFocus: "geolocate()" %>
+    </div>
+    <div class="form-group col-md-6">
+      <%= form.label :city %>
+      <%= form.text_field :city, class: "form-control rounded-0",required: true, id: :locality, disabled: true %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= form.label :state %>
+      <%= form.text_field :state, class: "form-control rounded-0",id: :administrative_area_level_1, disabled: true %>
+    </div>    
+    <div class="form-group col-md-6">
+      <%= form.label :country %>
+      <%= form.text_field :country, class: "form-control rounded-0", id: :country, disabled: true  %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= form.label :zipcode %>
+      <%= form.text_field :zipcode, class: "form-control rounded-0", id: :postal_code, disabled: true %>
+    </div>
+  </div>
+<% end %>   
