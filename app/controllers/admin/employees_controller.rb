@@ -1,6 +1,5 @@
 class Admin::EmployeesController < AdminController
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!
 
   def index
     @employees = Employee.all
@@ -25,7 +24,7 @@ class Admin::EmployeesController < AdminController
     @employee = Employee.new(employee_params)
     if @employee.save
       session[:employee_id] = @employee.id
-      redirect_to admin_employee_steps_path
+      redirect_to admin_employee_steps_path, notice: 'Employee was successfully created.'
     else
       render :new 
     end
@@ -34,7 +33,7 @@ class Admin::EmployeesController < AdminController
   def update
     if @employee.update(employee_params)
       session[:employee_id] = @employee.id
-      redirect_to admin_employee_steps_path
+      redirect_to admin_employee_steps_path, notice: 'Employee was successfully updated.'
     else
       render :edit 
     end
