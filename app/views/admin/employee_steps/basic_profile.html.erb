@@ -45,6 +45,10 @@
                 <%= form.label :date_of_birth %>
                 <%= form.date_field :date_of_birth, class: "form-control rounded-0" %>
               </div>
+              <div class="form-group col-md-6">
+                <%= form.label :select_employee %>
+                <%= form.select :department_id, options_for_select(Department.all.map {|department| [department.name, department.id]}, selected: form.object.try(:department)), { include_blank: "Select Employee" }, { class: "form-control form-control-line rounded-0", required: true } %>
+              </div>
             </div>  
             <div class="row">    
               <div class="form-group col-md-6">

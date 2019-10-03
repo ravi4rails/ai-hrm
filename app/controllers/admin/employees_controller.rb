@@ -1,6 +1,6 @@
 class Admin::EmployeesController < AdminController
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!
+  # before_action :authenticate_admin!
   
   def index
     @employees = Employee.all
@@ -20,6 +20,18 @@ class Admin::EmployeesController < AdminController
   def bulk_import; end
 
   def edit; end
+
+  def manager
+   @employee = Employee.find(params[:employee_id]) 
+  end
+
+  def assign_manager
+    @manager = Employee.find(params[:manager][:manager_id])
+    @subordinate = Employee.find(params[:manager][:employee_id])
+    @subordinate.manager = @manager
+    @subordinate.save
+    redirect_to admin_employees_path(@employee)
+  end
 
   def create
     @employee = Employee.new(employee_params)

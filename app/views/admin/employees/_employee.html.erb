@@ -5,12 +5,17 @@
         <%= image_tag "employee.jpg", class: "rounded-circle image" %>
         <h5 class="font-weight-bold mt-3"><%= employee.name %></h5>
         <h6 data-toggle="tooltip" data-placement="top" title="<%= employee.address.capitalize %>"><%= truncate(employee.address.capitalize, length: 20) %></h6>
+        <% if employee.is_manager %>
+          <span class="badge badge-success">Manger</span>
+        <% else %>
+          <span class="badge badge-danger">subordinate </span>
+        <% end %>
         <h5 class="text-dark"><%= employee.country %></h5>      
         <%= link_to admin_employee_path(employee), class: "btn btn-info waves-effect waves-light btn-sm" do %>
          <i class="fa fa-eye"></i>
         <% end %>
         <%= link_to edit_admin_employee_path(employee), class: "btn btn-warning waves-effect waves-light btn-sm" do %><i class="fa fa-edit"></i>
-        <% end %> 
+        <% end %>
       </div>
     </div>
   </div>      

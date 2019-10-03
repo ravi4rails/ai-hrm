@@ -144,6 +144,47 @@
       </div>
     </div>
   </div>
+  <% if @employee.is_manager %>
+    <% if @employee.subordinates.present? %>
+      <div class="row">
+        <div class="col-md-6">   
+          <div class="card mt-4">                 
+            <div class="card-header">
+              <h5 class="card-heading">Subordinates</h5>
+            </div>
+            <div class="card-body">
+              <ul>
+                <% @employee.subordinates.each do |sub_ordinates| %>    
+                  <li>
+                    <%= sub_ordinates.name %>                  
+                  </li>
+                <% end %>              
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>          
+  <% else %>
+    <% if @employee.manager.present? %>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card mt-4"> 
+            <div class="card-header">
+              <h5 class="card-heading">Manger</h5>
+            </div>
+            <div class="card-body">
+              <ul>
+                <li>
+                  <%= @employee.manager.name %>                            
+                </li>
+              </ul>
+           </div>
+         </div>
+        </div>
+      </div>
+    <%end%>
+  <% end %>
   <div class="card mt-4">
     <div class="card-header">
       <h5>Eductaional Credentials</h5>
@@ -156,6 +197,7 @@
       </div>
     </div>
   </div>
+ 
   <div class="card mt-4">
     <div class="card-header">
       <h5>Employee Relative</h5>
@@ -168,6 +210,8 @@
       </div>
     </div>
   </div>
+
+  <%= link_to 'Assign manager', admin_manager_path(employee_id: @employee.id), class: "btn btn-primary" %> 
 </div>
 
 <style type="text/css">

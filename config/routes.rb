@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/bulk_import" => "employees#bulk_import"
+    get "/manager" => "employees#manager"
+    post "/assign_manager" => "employees#assign_manager"
     resources :employee_relatives
     resources :educational_credentials
     resources :departments

@@ -15,13 +15,13 @@ class Admin::EmployeeStepsController < AdminController
     @employee = current_employee
     @employee.update(employee_params)
     if params[:id] == "basic_profile"
-       render_wizard @employee, notice: 'Basic profile was successfully  created.'
+      render_wizard @employee, notice: 'Basic profile was successfully  created.'
     elsif params[:id] == "address"
-       render_wizard @employee, notice: 'Address was successfully  created.'  
+      render_wizard @employee, notice: 'Address was successfully created.'  
     elsif params[:id] == "about_job"
-       render_wizard @employee, notice: 'About job was successfully  created.'
+      render_wizard @employee, notice: 'About job was successfully created.'
     elsif params[:id] == "info"
-       render_wizard @employee, notice: 'Employee was successfully  created.'
+      render_wizard @employee, notice: 'Employee was successfully created.'
     end     
   end 
 
