@@ -6,8 +6,19 @@
           <h5 class="card-heading">Basic profile</h5>
         </div>
         <div class="card-body">
-          <%= render 'partials/flash' %>   
-          <%= render :layout => 'form' do |form| %>
+          <%= render 'partials/flash' %>  
+          <%= form_for @employee, url: :wizard, html: {id: 'employee_form'} do |form| %>
+            <% if @employee.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
+
+                <ul>
+                <% @employee.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
             <div class="row">
               <div class="form-group col-md-6">
                 <%= form.label :first_name %>
@@ -45,6 +56,10 @@
                 <%= form.text_field :emergency_contact, class: "form-control rounded-0" %>
               </div>
             </div>
+            <div class="actions">
+              <%= link_to "Previous", edit_admin_employee_path(@employee), class: "btn btn-secondary" %>
+              <%= form.submit "Continue", class: 'btn btn-primary' %>
+            </div> 
           <% end %>
         </div>
       </div>

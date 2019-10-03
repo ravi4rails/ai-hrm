@@ -1,6 +1,7 @@
 class Admin::EmployeesController < AdminController
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_admin!
+  
   def index
     @employees = Employee.all
     @q = Employee.ransack(params[:q])
