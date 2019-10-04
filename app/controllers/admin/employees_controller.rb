@@ -33,6 +33,17 @@ class Admin::EmployeesController < AdminController
     redirect_to admin_employees_path(@employee)
   end
 
+  def subordinate
+    @employee = Employee.find(params[:employee_id]) 
+  end
+
+  def assign_subordinate
+    @subordinate = Employee.find(params[:subordinate][:employee_id])
+    @manager = Employee.find(params[:subordinate][:manager_id])
+    @manager.subordinates <<  @subordinate
+    redirect_to admin_employees_path(@manager)
+  end
+
   def create
     @employee = Employee.new(employee_params)
     if @employee.save

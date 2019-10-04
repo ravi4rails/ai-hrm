@@ -1,34 +1,52 @@
-<div class="col-12 col-md-3">
-  <div class="card mt-4">
-    <div class="card-body">
-      <div class="text-center">
-        <%= image_tag "employee.jpg", class: "rounded-circle image" %>
-        <h5 class="font-weight-bold mt-3"><%= employee.name %></h5>
-        <h6 data-toggle="tooltip" data-placement="top" title="<%= employee.address.capitalize %>"><%= truncate(employee.address.capitalize, length: 20) %></h6>
-        <% if employee.is_manager %>
+<table class="table table-bordered mt-4">
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Name</th>
+      <th>Profile</th>
+      <th>Assigned Users</th>
+      <th>Actions</th>          
+    </tr>
+  </thead>
+  <% @department.employees.order(is_manager: :desc).each do |employee| %>
+    <tbody>
+        <tr>
+          <td><%= image_tag "employee.jpg", class: "rounded-circle image" %></td>
+        <td><%= employee.name %></td>
+        <td>
+          <% if employee.is_manager %>
           <span class="badge badge-success">Manger</span>
-        <% else %>
+          <% else %>
           <span class="badge badge-danger">subordinate </span>
-        <% end %>
-        <h5 class="text-dark"><%= employee.country %></h5>      
-        <%= link_to admin_employee_path(employee), class: "btn btn-info waves-effect waves-light btn-sm" do %>
-         <i class="fa fa-eye"></i>
-        <% end %>
-        <%= link_to edit_admin_employee_path(employee), class: "btn btn-warning waves-effect waves-light btn-sm" do %><i class="fa fa-edit"></i>
-        <% end %>
-      </div>
-    </div>
-  </div>      
-</div>
+          <% end %>
+        </td>  
+        <% if employee.is_manager %>
+          <td>
+            <strong>Subordinates:</strong> 
+            <% employee.subordinates.each do |sub_ordinates| %>    
+              <li>
+                <%= sub_ordinates.name %>                  
+              </li>
+            <% end %>
+          </td>  
+        <% else %>
+          <td>
+            <strong>Manager:</strong> 
+            <li>
+             <%= employee.manager.name  %>
+            </li> 
+          </td> 
+        <% end %>  
+        <td><%= link_to 'View Profile', admin_employee_path(employee), class: "btn btn-info waves-effect waves-light btn-sm" %></td>
+        </tr>
+    </tbody>
+  <% end %>  
 
-<script type="text/javascript">
-  $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
-  });  
-</script>
+</table>
+
 
 <style type="text/css">
   .image{
-    width: 100px;
+    width: 50px;
   }
 </style>
