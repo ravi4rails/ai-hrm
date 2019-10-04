@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
+    get "/dashboard" => "sites#dashboard"
     get "/bulk_import" => "employees#bulk_import"
     get "/manager" => "employees#manager"
     get "/subordinate" => "employees#subordinate"

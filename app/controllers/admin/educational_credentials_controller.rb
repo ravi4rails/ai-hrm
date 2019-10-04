@@ -1,7 +1,6 @@
 class Admin::EducationalCredentialsController < AdminController
   before_action :set_educational_credential, only: [:edit, :show, :destroy, :update]
-  before_action :authenticate_admin!
-
+  
   def index
     @educational_credentials = EducationalCredential.all
   end

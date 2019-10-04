@@ -1,6 +1,5 @@
 class Admin::EmployeeRelativesController < AdminController
   before_action :set_employee_relative, only: [:edit, :show, :destroy, :update]
-  before_action :authenticate_admin!
 
   def index
     @employee_relatives = EmployeeRelative.all
