@@ -1,0 +1,29 @@
+<div class="containerr">
+  <div class="card">
+    <div class="card-body">
+      <p id="notice"><%= notice %></p>
+      <p>
+        <strong>Bank name:</strong>
+        <%= @bank_detail.bank_name %>
+      </p>
+
+      <p>
+        <strong>Account number:</strong>
+        <%= @bank_detail.account_number %>
+      </p>
+
+      <p>
+        <strong>Branch:</strong>
+        <%= @bank_detail.branch %>
+      </p>
+
+      <p>
+        <strong>Ifsc code:</strong>
+        <%= @bank_detail.ifsc_code %>
+      </p>
+
+      <%= link_to 'Edit', edit_admin_bank_detail_path(@bank_detail), class: "btn btn-warning btn-sm" %> |
+      <%= link_to 'Back', admin_bank_details_path, class: "btn btn-info btn-sm"%>      
+    </div>
+  </div>
+</div>

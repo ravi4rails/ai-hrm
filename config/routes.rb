@@ -11,11 +11,14 @@ Rails.application.routes.draw do
   namespace :admin do
     get "/bulk_import" => "employees#bulk_import"
     get "/manager" => "employees#manager"
+    get "/subordinate" => "employees#subordinate"
     post "/assign_manager" => "employees#assign_manager"
+    post "/assign_subordinate" => "employees#assign_subordinate"
     resources :employee_relatives
     resources :educational_credentials
     resources :departments
     resources :employee_steps
+    resources :bank_details
     resources :employees do
       collection { post :import }
     end  
