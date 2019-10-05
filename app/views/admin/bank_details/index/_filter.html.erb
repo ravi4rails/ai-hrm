@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="form-group col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <%= search_form_for @q, url: :admin_bank_details do |f| %>
+          <%= f.label :search %>
+          <%= f.search_field :employee_full_name_cont, class: "form-control rounded-0",placeholder: "search" %> 
+          <%= f.submit "search", class: "btn btn-primary mt-3 rounded-0" %>
+          <%= link_to "reset", admin_bank_details_path, class: "btn btn-primary rounded-0 mt-3" %>
+        <% end %>      
+      </div>        
+    </div>
+  </div>
+</div>

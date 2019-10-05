@@ -9,8 +9,7 @@
           </p>
 
           <p>
-            <strong>Is active:</strong>
-            <%= @employee.is_active %>
+            <span class="badge badge-<%= @employee.is_active ? 'success' : 'danger' %>"><%= @employee.is_active ? 'Active' : 'Inactive' %></span>
           </p>
           <%= link_to 'Edit', edit_admin_employee_path(@employee), class: "btn btn-warning btn-sm" %> 
           <%= link_to 'Back', admin_employees_path, class: "btn btn-info btn-sm" %><br>

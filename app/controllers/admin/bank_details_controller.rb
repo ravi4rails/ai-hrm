@@ -2,7 +2,8 @@ class Admin::BankDetailsController < AdminController
   before_action :set_bank_detail, only: [:show, :edit, :update, :destroy]
 
   def index
-    @bank_details = BankDetail.all
+    @q = BankDetail.ransack(params[:q])
+    @bank_details = @q.result.includes(:employee)
   end
 
   def show;end
@@ -43,6 +44,6 @@ class Admin::BankDetailsController < AdminController
     end
 
     def bank_detail_params
-      params.require(:bank_detail).permit(:bank_name, :account_number, :branch, :ifsc_code)
+      params.require(:bank_detail).permit!
     end
 end

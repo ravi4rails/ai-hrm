@@ -3,7 +3,7 @@ class Employee < ApplicationRecord
   belongs_to :department, optional: true
   has_many :educational_credentials
   has_many :employee_relatives
-  has_one :bank_details
+  has_one :bank_detail
   has_many :subordinates, class_name: "Employee",
                           foreign_key: "manager_id"
   belongs_to :manager, class_name: "Employee", optional: true
@@ -16,5 +16,14 @@ class Employee < ApplicationRecord
     CSV.foreach(file.path, headers: true) do |row|
       Employee.create! row.to_hash
     end
-  end     
+  end    
+
+  ransacker :full_name do |parent|
+    Arel::Nodes::InfixOperation.new('||',
+      Arel::Nodes::InfixOperation.new('||',
+        parent.table[:first_name], Arel::Nodes.build_quoted(' ')
+      ),
+      parent.table[:last_name]
+    )
+  end
 end
