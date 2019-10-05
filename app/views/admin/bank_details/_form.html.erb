@@ -10,30 +10,36 @@
       </ul>
     </div>
   <% end %>
+  
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= form.label :bank_name %>
+      <%= form.text_field :bank_name, class: "form-control rounded-0" %>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :bank_name %>
-    <%= form.text_field :bank_name, class: "form-control rounded-0" %>
+    <div class="form-group col-md-6">
+      <%= form.label :account_number %>
+      <%= form.text_field :account_number, class: "form-control rounded-0"  %>
+    </div>    
+  </div>
+  
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= form.label :branch %>
+      <%= form.text_field :branch, class: "form-control rounded-0"  %>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= form.label :ifsc_code %>
+      <%= form.text_field :ifsc_code, class: "form-control rounded-0"  %>
+    </div>    
   </div>
 
-  <div class="form-group">
-    <%= form.label :account_number %>
-    <%= form.text_field :account_number, class: "form-control rounded-0"  %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :branch %>
-    <%= form.text_field :branch, class: "form-control rounded-0"  %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :ifsc_code %>
-    <%= form.text_field :ifsc_code, class: "form-control rounded-0"  %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :select_employee %>
-    <%= form.select :employee_id, options_for_select(Employee.all.map {|employee| [employee.name, employee.id]}, selected: form.object.try(:employee)), { include_blank: "Select Employee" }, { class: "form-control form-control-line rounded-0", required: true } %>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= form.label :select_employee %>
+      <%= form.select :employee_id, options_for_select(Employee.all.map {|employee| [employee.name, employee.id]}, selected: form.object.try(:employee)), { include_blank: "Select Employee" }, { class: "form-control js-example-basic-single", required: true } %>
+    </div>    
   </div>
   
   <div class="actions">
@@ -41,3 +47,10 @@
     <%= link_to 'Back', admin_bank_details_path, class: "btn btn-outline-primary" %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.js-example-basic-single').select2();
+});
+
+</script>
