@@ -1,6 +1,6 @@
 <%= form_for :manager, url: :admin_assign_manager, method: :post  do |form| %>
   <%= form.hidden_field :employee_id, value: @employee.id %>
-  <div class="form-group col-md-6">
+  <div class="form-group">
     <%= form.label :select_manager %>
     <%= form.select :manager_id, options_for_select(Employee.where(is_manager: true).map {|employee| [employee.name, employee.id]}, selected: form.object.try(:employee)), { include_blank: "Select Employee" }, { class: "form-control form-control-line rounded-0", required: true } %>
   </div>

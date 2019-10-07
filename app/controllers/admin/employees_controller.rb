@@ -29,6 +29,7 @@ class Admin::EmployeesController < AdminController
     @subordinate = Employee.find(params[:manager][:employee_id])
     @subordinate.manager = @manager
     @subordinate.save
+    EmployeeMailer.subordinate_email(@subordinate).deliver_now && EmployeeMailer.manager_email(@manager).deliver_now
     redirect_to admin_employees_path(@employee)
   end
 
@@ -40,6 +41,8 @@ class Admin::EmployeesController < AdminController
     @subordinate = Employee.find(params[:subordinate][:employee_id])
     @manager = Employee.find(params[:subordinate][:manager_id])
     @manager.subordinates <<  @subordinate
+    EmployeeMailer.manager_email(@manager).deliver_now && 
+    EmployeeMailer.subordinate_email(@subordinate).deliver_now
     redirect_to admin_employees_path(@manager)
   end
 
@@ -47,7 +50,7 @@ class Admin::EmployeesController < AdminController
     @employee = Employee.new(employee_params)
     if @employee.save
       session[:employee_id] = @employee.id
-      redirect_to admin_employee_steps_path, notice: 'Employee was successfully created.'
+      redirect_to admin_employee_steps_path, notice: 'Profile was successfully created.'
     else
       render :new 
     end

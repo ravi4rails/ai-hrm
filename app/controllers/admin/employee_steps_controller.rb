@@ -5,6 +5,7 @@ class Admin::EmployeeStepsController < AdminController
   def show
     @employee = current_employee
     if params[:id] == "wicked_finish"
+      EmployeeMailer.current_user_email(current_admin).deliver_now
       redirect_to admin_employee_path(@employee), notice: "Employee was successfully created "
     else
       render_wizard

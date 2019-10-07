@@ -70,3 +70,4 @@ gem 'font-awesome-sass', '~> 5.11.1'
 gem 'jquery-rails'
 gem 'ransack'
 gem 'wicked'
+gem "letter_opener", :group => :development
