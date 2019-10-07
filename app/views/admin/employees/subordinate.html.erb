@@ -1,8 +1,8 @@
 <%= form_for :subordinate, url: :admin_assign_subordinate, method: :post  do |form| %>
   <%= form.hidden_field :manager_id, value: @employee.id %>
   <div class="form-group">
-    <%= form.label :select_employee %>
-    <%= form.select :employee_id, options_for_select(Employee.where(is_manager: false).map {|employee| [employee.name, employee.id]}, selected: form.object.try(:employee)), { include_blank: "Select Employee" }, { class: "form-control form-control-line rounded-0", required: true } %>
+    <%= form.label :select_subordinate %>
+    <%= form.select :employee_id, options_for_select(Employee.where(is_manager: false).map {|employee| [employee.name, employee.id]}, selected: form.object.try(:employee)), { include_blank: "Select Subordinate" }, { class: "form-control form-control-line rounded-0", required: true } %>
   </div>
   <div class="actions">
     <%= form.submit class: "btn btn-primary" %>
