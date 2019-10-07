@@ -5,8 +5,8 @@
         <%= search_form_for @q, url: :admin_bank_details do |f| %>
           <%= f.label :search %>
           <%= f.search_field :employee_full_name_cont, class: "form-control rounded-0",placeholder: "search" %> 
-          <%= f.submit "search", class: "btn btn-primary mt-3 rounded-0" %>
-          <%= link_to "reset", admin_bank_details_path, class: "btn btn-primary rounded-0 mt-3" %>
+          <%= f.submit "Search", class: "btn btn-primary mt-3 rounded-0" %>
+          <%= link_to "Reset", admin_bank_details_path, class: "btn btn-primary rounded-0 mt-3" %>
         <% end %>      
       </div>        
     </div>

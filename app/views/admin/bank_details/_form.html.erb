@@ -14,7 +14,7 @@
   <div class="row">
     <div class="form-group col-md-6">
       <%= form.label :bank_name %>
-      <%= form.text_field :bank_name, class: "form-control rounded-0" %>
+      <%= form.select :bank_name, options_for_select(BankDetail::BANK, selected: form.object.try(:bank_name)), {include_blank: "Select Bank name"}, { class: "form-control rounded-0 js-example-basic-single", required: true } %>
     </div>
 
     <div class="form-group col-md-6">
@@ -30,12 +30,16 @@
     </div>
 
     <div class="form-group col-md-6">
-      <%= form.label :ifsc_code %>
+      <%= form.label :ifsc_code, 'IFSC CODE' %>
       <%= form.text_field :ifsc_code, class: "form-control rounded-0"  %>
     </div>    
   </div>
 
   <div class="row">
+    <div class="form-group col-md-6">
+      <%= form.label :city %>
+      <%= form.text_field :city, class: "form-control rounded-0"  %>
+    </div>
     <div class="form-group col-md-6">
       <%= form.label :select_employee %>
       <%= form.select :employee_id, options_for_select(Employee.all.map {|employee| [employee.name, employee.id]}, selected: form.object.try(:employee)), { include_blank: "Select Employee" }, { class: "form-control js-example-basic-single", required: true } %>
