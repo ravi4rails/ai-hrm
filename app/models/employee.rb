@@ -1,5 +1,4 @@
 class Employee < ApplicationRecord
-
   belongs_to :department, optional: true
   has_many :educational_credentials
   has_many :employee_relatives
@@ -26,4 +25,5 @@ class Employee < ApplicationRecord
       parent.table[:last_name]
     )
   end
+  
 end

@@ -16,12 +16,10 @@ class Admin::BankDetailsController < AdminController
 
   def create
     @bank_detail = BankDetail.new(bank_detail_params)
-
     if @bank_detail.save
      redirect_to admin_bank_detail_path(@bank_detail), notice: "Bank details has been created successfully."
     else
-
-     render 'new'
+      render 'new'
     end
   end
 

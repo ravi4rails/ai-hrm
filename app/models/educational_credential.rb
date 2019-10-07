@@ -1,3 +1,3 @@
-class EducationalCredential < ApplicationRecord
-  belongs_to :employee, optional: true
+class EducationalCredential < ApplicationRecord  
+  include Employeeable
 end

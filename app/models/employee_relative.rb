@@ -1,3 +1,3 @@
 class EmployeeRelative < ApplicationRecord
-  belongs_to :employee, optional: true
+  include Employeeable
 end

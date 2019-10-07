@@ -11,12 +11,15 @@ $(document).ready(function(){
         required: true
       },
       'bank_detail[bank_name]' : {
+        required: true,
         regx: /^[a-zA-Z\s]+$/
       }
     },
     messages: { 
       'bank_detail[branch]' : "Please enter Branch",
       'bank_detail[ifsc_code]' : "Please enter ifsc code",
+      'bank_detail[bank_name]' : {
+        required: "Please enter bank name" },
       'bank_detail[account_number]' : {
         required: "Please enter Account Number",
         number: "Please enter number only"
