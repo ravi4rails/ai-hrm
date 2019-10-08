@@ -4,7 +4,7 @@ class Admin::EmployeesController < AdminController
   def index
     @employees = Employee.all
     @q = Employee.ransack(params[:q])
-    @employees = @q.result(distinct: true)
+    @employees = @q.result(distinct: true).page(params[:page]).per(5)
   end
 
   def new
@@ -41,7 +41,7 @@ class Admin::EmployeesController < AdminController
     @subordinate = Employee.find(params[:subordinate][:employee_id])
     @manager = Employee.find(params[:subordinate][:manager_id])
     @manager.subordinates <<  @subordinate
-    EmployeeMailer.manager_email(@manager).deliver_now && 
+    EmployeeMailer.manager_email(@manager, @subordinate).deliver_now
     EmployeeMailer.subordinate_email(@subordinate).deliver_now
     redirect_to admin_employees_path(@manager)
   end

@@ -66,6 +66,9 @@
             <% end %>
           </tbody>
         </table>        
+        <%= paginate @employees, theme: 'twitter-bootstrap-4',
+                   pagination_class: "pagination-sm",
+                   nav_class: "d-inline-b" %>
       </div>
     </div>
   </div>
