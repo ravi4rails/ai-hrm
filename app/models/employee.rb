@@ -3,9 +3,11 @@ class Employee < ApplicationRecord
   has_many :educational_credentials
   has_many :employee_relatives
   has_one :bank_detail
+  has_one :employee_grade
   has_many :subordinates, class_name: "Employee",
                           foreign_key: "manager_id"
   belongs_to :manager, class_name: "Employee", optional: true
+  # validates :first_name, :middle_name, :last_name, :email, :date_of_birth, :personal_contact, :emergency_contact, :address, :city, :state, :country, :zipcode, :job_title, :job_description, :gender, :marital_status, :blood_group, :religion, :employee_code, :is_active, presence: true
 
   def name
     "#{self.first_name} #{self.middle_name} #{self.last_name}".strip
@@ -25,5 +27,4 @@ class Employee < ApplicationRecord
       parent.table[:last_name]
     )
   end
-  
 end

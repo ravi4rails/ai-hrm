@@ -1,7 +1,7 @@
 class AdminController < ApplicationController
   layout 'admin'
   helper_method :current_employee
-  # before_action :authenticate_admin!
+  before_action :authenticate_admin!
   private
 
   def current_employee

@@ -13,11 +13,11 @@ class EmployeeMailer < ApplicationMailer
   def manager_email(manager, subordinate)
     @manager = manager
     @subordinate = subordinate
-    mail(to: @manager.email, subject: 'Employee has created successfully')  
+    mail(to: @manager.email, subject: 'Subordinate has assigned successfully')  
   end
 
   def subordinate_email(subordinate)
     @subordinate = subordinate
-    mail(to: @subordinate.email, subject: 'Employee has created successfully')  
+    mail(to: @subordinate.email, subject: 'Manager has assigned successfully')  
   end  
 end

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get "/subordinate" => "employees#subordinate"
     post "/assign_manager" => "employees#assign_manager"
     post "/assign_subordinate" => "employees#assign_subordinate"
+    post "/save_grade" => "employees#save_grade"
     resources :employee_relatives
     resources :educational_credentials
     resources :departments

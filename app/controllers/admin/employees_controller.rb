@@ -73,6 +73,20 @@ class Admin::EmployeesController < AdminController
     end
   end
 
+  def save_grade
+  @grade = EmployeeGrade.find_by(params[:id])
+    respond_to do |format|
+      if @grade.save
+        format.js
+        format.html { redirect_to admin_employees_path, notice: 'Employe grade assigned.' }
+        format.json { render :show, status: :created, location: @employee }
+      else
+        format.html { render :save_grade }
+        format.json { render json: @employee.errors, status: :unprocessable_entity }
+      end
+    end  
+  end 
+
   private
 
     def set_employee

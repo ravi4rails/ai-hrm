@@ -1,0 +1,27 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= form_for :employee_grade, url: :admin_save_grade, remote: true do |form| %>
+        <div class="modal-body">
+          <div class="form-group">
+              <%= form.label :select_employee_grade %>
+              <%= form.hidden_field :employee_id, value: @employee.id %>
+              <%= form.select :employee_grade_id, options_for_select(EmployeeGrade.all.map {|employee_grade| [employee_grade.name, employee_grade.id]}, selected: form.object.try(:employee_grade)), { include_blank: "Select Employee grade" }, { class: "form-control form-control-line rounded-0", required: true } %>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <%= form.submit  class: "btn btn-primary" %>
+        </div>
+      <% end %> 
+    </div>
+  </div>
+</div>

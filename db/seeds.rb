@@ -14,3 +14,10 @@ departments = Department.create([
   { name: 'Canteen', established_from: Date.today - 3.years }, 
   { name: 'Stores', established_from: Date.today - 3.years } 
 ])
+
+employee_grades = EmployeeGrade.create([
+ { name: 'A' },
+ { name: 'B' },
+ { name: 'C' },
+ { name: 'D' }
+])
