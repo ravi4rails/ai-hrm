@@ -3,27 +3,8 @@
   <div class="row">
     <div class="col-4 offset-4 text-center">
       <div class="card rounded-0 mb-5">
-        <div class="card-body">
-          <p>
-            <%= image_tag 'male.jpg', class: "image"%>
-          </p>
-          <% if @employee.employee_grade.present? %>
-          <p>Grade:-<%= @employee.employee_grade.name %></p>
-          <%end%>  
-          <p>
-            <span class="badge badge-<%= @employee.is_active ? 'success' : 'danger' %>"><%= @employee.is_active ? 'Active' : 'Inactive' %></span>
-          </p>
-          <%= link_to 'Edit', edit_admin_employee_path(@employee), class: "btn btn-warning btn-sm" %> 
-          <%= link_to 'Back', admin_employees_path, class: "btn btn-info btn-sm" %><br>
-          <% if @employee.is_active %>
-            <% if @employee.is_manager %>
-              <%= link_to 'Assign subordinate', admin_subordinate_path(employee_id: @employee), class: "btn btn-primary btn-sm mt-2" %>
-            <% else %>
-              <%= link_to 'Assign manager', admin_manager_path(employee_id: @employee), class: "btn btn-primary btn-sm mt-2" %> 
-            <% end %>      
-          <% end %><br>           
-          <%= link_to 'Assign grade', edit_admin_employee_path(@employee), class: "btn btn-warning btn-sm", data: { toggle: "modal", target: "#exampleModal"} %>
-          <%=  render 'admin/employees/assign_grade' %>
+        <div class="card-body" id="gradeDiv">
+          <%= render 'admin/employees/profile' %>
         </div>
       </div>
     </div>
@@ -221,9 +202,9 @@
     </div>
   </div>
 </div>
-
 <style type="text/css">
   .image{
     width: 100px;
   }
 </style>
+

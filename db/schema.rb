@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_08_071712) do
+ActiveRecord::Schema.define(version: 2019_10_09_055515) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -64,8 +64,6 @@ ActiveRecord::Schema.define(version: 2019_10_08_071712) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "employee_id"
-    t.index ["employee_id"], name: "index_employee_grades_on_employee_id"
   end
 
   create_table "employee_relatives", force: :cascade do |t|
@@ -107,7 +105,9 @@ ActiveRecord::Schema.define(version: 2019_10_08_071712) do
     t.integer "department_id"
     t.integer "manager_id"
     t.boolean "is_manager", default: false
+    t.integer "employee_grade_id"
     t.index ["department_id"], name: "index_employees_on_department_id"
+    t.index ["employee_grade_id"], name: "index_employees_on_employee_grade_id"
     t.index ["manager_id"], name: "index_employees_on_manager_id"
   end
 

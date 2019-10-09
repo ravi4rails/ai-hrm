@@ -74,9 +74,9 @@ class Admin::EmployeesController < AdminController
   end
 
   def save_grade
-  @grade = EmployeeGrade.find_by(params[:id])
+    @employee = Employee.find(params[:employee_grade][:employee_id])
     respond_to do |format|
-      if @grade.save
+      if @employee.update(employee_grade_id: params[:employee_grade][:employee_grade_id])
         format.js
         format.html { redirect_to admin_employees_path, notice: 'Employe grade assigned.' }
         format.json { render :show, status: :created, location: @employee }

@@ -1,0 +1,24 @@
+<p>
+  <%= image_tag 'male.jpg', class: "image"%>
+</p>
+<% if @employee.employee_grade.present? %>
+ <p>Grade:-<%= @employee.employee_grade.name %></p>
+<%end%>  
+<p>
+  <span class="badge badge-<%= @employee.is_active ? 'success' : 'danger' %>"><%= @employee.is_active ? 'Active' : 'Inactive' %></span>
+</p>
+<%= link_to 'Edit', edit_admin_employee_path(@employee), class: "btn btn-warning btn-sm" %> 
+<%= link_to 'Back', admin_employees_path, class: "btn btn-info btn-sm" %><br>
+<% if @employee.is_active %>
+  <% if @employee.is_manager %>
+    <%= link_to 'Assign subordinate', admin_subordinate_path(employee_id: @employee), class: "btn btn-primary btn-sm mt-2" %>
+  <% else %>
+    <%= link_to 'Assign manager', admin_manager_path(employee_id: @employee), class: "btn btn-primary btn-sm mt-2" %> 
+  <% end %>      
+<% end %>        
+<%#= link_to 'Assign grade', "#", class: "btn btn-success btn-sm mt-2", data: { toggle: "modal", target: "#exampleModal"} %>
+
+<button type="button" class="btn btn-success btn-sm mt-2" data-toggle="modal" data-target="#gradeModal">
+  Assign grade
+</button>
+<%=  render 'admin/employees/assign_grade' %>

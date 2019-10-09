@@ -11,13 +11,13 @@
   <% @department.employees.order(is_manager: :desc).each do |employee| %>
     <tbody>
         <tr>
-          <td><%= image_tag "employee.jpg", class: "rounded-circle image" %></td>
+        <td><%= image_tag "employee.jpg", class: "rounded-circle image" %></td>
         <td><%= employee.name %></td>
         <td>
           <% if employee.is_manager %>
-          <span class="badge badge-success">Manger</span>
+           <span class="badge badge-success">Manger</span>
           <% else %>
-          <span class="badge badge-danger">subordinate </span>
+           <span class="badge badge-danger">subordinate </span>
           <% end %>
         </td>  
         <% if employee.is_manager %>
@@ -32,9 +32,11 @@
         <% else %>
           <td>
             <strong>Manager:</strong> 
-            <li>
-             <%= employee.manager.name  %>
-            </li> 
+            <% if employee.manager.present? %>
+              <li>
+                <%= employee.manager.name  %>
+              </li> 
+            <% end %>
           </td> 
         <% end %>  
         <td><%= link_to 'View Profile', admin_employee_path(employee), class: "btn btn-info waves-effect waves-light btn-sm" %></td>

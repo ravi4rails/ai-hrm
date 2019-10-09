@@ -3,7 +3,7 @@ class Employee < ApplicationRecord
   has_many :educational_credentials
   has_many :employee_relatives
   has_one :bank_detail
-  has_one :employee_grade
+  belongs_to :employee_grade, optional: true
   has_many :subordinates, class_name: "Employee",
                           foreign_key: "manager_id"
   belongs_to :manager, class_name: "Employee", optional: true
