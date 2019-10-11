@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :departments
     resources :employee_steps
     resources :bank_details
+    resources :leaves
     resources :employees do
       collection { post :import }
     end  
