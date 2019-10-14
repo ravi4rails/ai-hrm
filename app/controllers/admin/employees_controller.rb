@@ -86,7 +86,7 @@ class Admin::EmployeesController < AdminController
       end
     end  
   end 
-  
+
   private
 
     def set_employee

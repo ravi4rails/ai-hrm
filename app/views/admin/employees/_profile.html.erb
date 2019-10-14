@@ -2,8 +2,8 @@
   <%= image_tag 'male.jpg', class: "image"%>
 </p>
 <% if @employee.employee_grade.present? %>
- <p>Grade:-<%= @employee.employee_grade.name %></p>
-<%end%>  
+  <p>Grade:-<%= @employee.employee_grade.name %></p>
+<% end %>  
 <p>
   <span class="badge badge-<%= @employee.is_active ? 'success' : 'danger' %>"><%= @employee.is_active ? 'Active' : 'Inactive' %></span>
 </p>

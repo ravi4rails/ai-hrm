@@ -7,16 +7,6 @@
           <strong>Total Assigned Leaves:</strong>
           <%= @leave.total_assigned_leaves %>
         </p>
-         
-        <p>
-          <strong>Taken:</strong>
-          <%= @leave.taken %>
-        </p>
-         
-        <p>
-          <strong>Remaining:</strong>
-          <%= @leave.remaining %>
-        </p>
         <%= link_to 'Edit', edit_admin_leafe_path(@leave), class: "btn btn-warning btn-sm" %>  
         <%= link_to 'Back', admin_leaves_path, class: "btn btn-info btn-sm" %>
       </div>

@@ -1,6 +1,7 @@
 class AdminController < ApplicationController
   layout 'admin'
   helper_method :current_employee
+  skip_before_action :verify_authenticity_token
   before_action :authenticate_admin!
   private
 

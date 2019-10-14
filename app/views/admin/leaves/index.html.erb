@@ -16,16 +16,12 @@
       <table class="table table-bordered">
         <tr>
           <th>Total Assigned Leaves</th>
-          <th>Taken</th>
-          <th>Remaining</th>
           <th colspan="3">Actions</th>
         </tr>
        
         <% @leaves.each do |leave| %>
           <tr>
             <td><%= leave.total_assigned_leaves %></td>
-            <td><%= leave.taken %></td>
-            <td><%= leave.remaining %></td>
             <td>
               <div class="dropdown">
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Actions</button>
