@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_09_055515) do
+ActiveRecord::Schema.define(version: 2019_10_19_072410) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -109,6 +109,16 @@ ActiveRecord::Schema.define(version: 2019_10_09_055515) do
     t.index ["department_id"], name: "index_employees_on_department_id"
     t.index ["employee_grade_id"], name: "index_employees_on_employee_grade_id"
     t.index ["manager_id"], name: "index_employees_on_manager_id"
+  end
+
+  create_table "leaves", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "employee_id"
+    t.string "total_assigned_leaves"
+    t.string "taken"
+    t.string "remaining"
+    t.index ["employee_id"], name: "index_leaves_on_employee_id"
   end
 
 end
