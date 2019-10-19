@@ -5,7 +5,6 @@ $(document).ready(function(){
     },
     rules: {
       'employee[first_name]' : "required",
-      'employee[middle_name]' : "required",
       'employee[last_name]' : "required",
       'employee[email]' : "required",
       'employee[date_of_birth]' : "required",
@@ -27,7 +26,6 @@ $(document).ready(function(){
     },
     messages: { 
       'employee[first_name]' : "Please enter employee name",
-      'employee[middle_name]' : "Please enter middle_name",
       'employee[last_name]' : "Please enter lastname",
       'employee[email]' : "Please enter email",
       'employee[date_of_birth]' : "Please enter date of birth",
