@@ -27,7 +27,7 @@ $(document).ready(function(){
     },
     messages: { 
       'employee[first_name]' : "Please enter employee name",
-      'employee[middle_name]' : "Please enter date of established",
+      'employee[middle_name]' : "Please enter middle_name",
       'employee[last_name]' : "Please enter lastname",
       'employee[email]' : "Please enter email",
       'employee[date_of_birth]' : "Please enter date of birth",

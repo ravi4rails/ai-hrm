@@ -70,5 +70,6 @@ gem 'jquery-rails'
 gem 'ransack'
 gem 'wicked'
 gem 'letter_opener', :group => :development
+gem 'letter_opener_web'
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'

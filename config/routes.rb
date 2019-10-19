@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  
   root 'admin/sites#dashboard'
   devise_for :admins, controllers: {
     sessions:       'admins/sessions',
