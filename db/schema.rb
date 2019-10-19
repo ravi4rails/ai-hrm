@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_19_072410) do
+ActiveRecord::Schema.define(version: 2019_10_19_072138) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -36,7 +39,7 @@ ActiveRecord::Schema.define(version: 2019_10_19_072410) do
     t.string "ifsc_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "employee_id"
+    t.bigint "employee_id"
     t.string "city"
     t.index ["employee_id"], name: "index_bank_details_on_employee_id"
   end
@@ -45,7 +48,6 @@ ActiveRecord::Schema.define(version: 2019_10_19_072410) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
-    t.date "established_from"
   end
 
   create_table "educational_credentials", force: :cascade do |t|
@@ -53,7 +55,7 @@ ActiveRecord::Schema.define(version: 2019_10_19_072410) do
     t.string "board_or_university"
     t.string "city"
     t.string "marks"
-    t.integer "employee_id"
+    t.bigint "employee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["employee_id"], name: "index_educational_credentials_on_employee_id"
@@ -71,7 +73,7 @@ ActiveRecord::Schema.define(version: 2019_10_19_072410) do
     t.string "contact"
     t.string "address"
     t.string "relation"
-    t.integer "employee_id"
+    t.bigint "employee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["employee_id"], name: "index_employee_relatives_on_employee_id"
@@ -102,23 +104,18 @@ ActiveRecord::Schema.define(version: 2019_10_19_072410) do
     t.boolean "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "department_id"
-    t.integer "manager_id"
+    t.bigint "department_id"
+    t.bigint "manager_id"
     t.boolean "is_manager", default: false
-    t.integer "employee_grade_id"
+    t.bigint "employee_grade_id"
     t.index ["department_id"], name: "index_employees_on_department_id"
     t.index ["employee_grade_id"], name: "index_employees_on_employee_grade_id"
     t.index ["manager_id"], name: "index_employees_on_manager_id"
   end
 
-  create_table "leaves", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "employee_id"
-    t.string "total_assigned_leaves"
-    t.string "taken"
-    t.string "remaining"
-    t.index ["employee_id"], name: "index_leaves_on_employee_id"
-  end
-
+  add_foreign_key "bank_details", "employees"
+  add_foreign_key "educational_credentials", "employees"
+  add_foreign_key "employee_relatives", "employees"
+  add_foreign_key "employees", "departments"
+  add_foreign_key "employees", "employee_grades"
 end
