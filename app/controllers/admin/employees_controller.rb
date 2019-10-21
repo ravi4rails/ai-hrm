@@ -88,6 +88,7 @@ class Admin::EmployeesController < AdminController
   end 
 
   private
+    
 
     def set_employee
       @employee = Employee.find(params[:id])

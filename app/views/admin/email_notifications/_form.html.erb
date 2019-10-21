@@ -1,0 +1,42 @@
+<%= form_for [:admin, @email_notification], html: {id: 'email_notification_form'} do |form| %>
+ 
+  <% if @email_notification.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@email_notification.errors.count, "error") %> prohibited
+        this email_notification from being saved:
+      </h2>
+      <ul>
+        <% @email_notification.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= form.label :subject %>
+      <%= form.text_field :subject, class: "form-control rounded-0" %>
+    </div>
+   
+    <div class="form-group col-md-6">
+      <%= form.label :description %>
+      <%= form.text_area :description, class: "form-control rounded-0" %>
+    </div>  
+  </div>
+   
+  <%= fields_for(@email_notification_employee) do |form| %> 
+    <div class="form-group">
+      <%= form.label :select_employee %>
+      <%= form.select(:employee_id, Employee.all.map {|p| [p.name, p.id] }, { :prompt => "Please select"},  { :multiple => true, :size => '10x10' })  %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-primary" %>
+    <%= link_to 'Back', admin_employee_relatives_path, class: "btn btn-outline-primary" %>
+  </div>
+ 
+<% end %>

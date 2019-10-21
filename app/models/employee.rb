@@ -7,6 +7,8 @@ class Employee < ApplicationRecord
   has_many :subordinates, class_name: "Employee",
                           foreign_key: "manager_id"
   belongs_to :manager, class_name: "Employee", optional: true
+  has_many :email_employee_notifications
+  has_many :email_notifications, through: :email_employee_notifications
   # validates :first_name, :middle_name, :last_name, :email, :date_of_birth, :personal_contact, :emergency_contact, :address, :city, :state, :country, :zipcode, :job_title, :job_description, :gender, :marital_status, :blood_group, :religion, :employee_code, :is_active, presence: true
 
   def name

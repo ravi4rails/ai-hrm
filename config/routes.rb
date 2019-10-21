@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   mount LetterOpenerWeb::Engine, at: "/letter_opener"
   
   root 'admin/sites#dashboard'
@@ -23,6 +22,7 @@ Rails.application.routes.draw do
     resources :educational_credentials
     resources :departments
     resources :employee_steps
+    resources :email_notifications
     resources :bank_details
     resources :employees do
       collection { post :import }

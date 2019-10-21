@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card rounded-0 mt-5 mb-5">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <h1>Listing Email Notification</h1>
+            </div>
+            <div class="col-md-6">
+              <%= link_to 'New Employee Relative', new_admin_email_notification_path, class: "btn btn-primary rounded-0 float-right" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <table class="table table-bordered">
+        <tr>
+          <th>Subject</th>
+          <th>Description</th>
+          <th colspan="3">Actions</th>
+        </tr>
+       
+        <% @email_notifications.each do |email_notification| %>
+          <tr>
+            <td><%= email_notification.subject %></td>
+            <td><%= email_notification.description %></td>
+            <td>
+              <div class="dropdown">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Actions</button>
+                <div class="dropdown-menu">         
+                  <%= link_to 'Show', admin_email_notification_path(email_notification), class: "dropdown-item" %>
+                  <%= link_to 'Edit', edit_admin_email_notification_path(email_notification), class: "dropdown-item" %>
+                  <%= link_to 'Destroy', admin_email_notification_path(email_notification), method: :delete, data: { confirm: 'Are you sure?' }, class: "dropdown-item" %>
+                </div>
+              </div>    
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

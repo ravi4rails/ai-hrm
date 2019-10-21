@@ -20,4 +20,11 @@ class EmployeeMailer < ApplicationMailer
     @subordinate = subordinate
     mail(to: @subordinate.email, subject: 'Manager has assigned successfully')  
   end  
+
+  def email_notification(subject, description, email)
+    @email = email
+    @subject = subject
+    @description = description
+    mail(to: @email, subject: @subject)
+  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_09_055515) do
+ActiveRecord::Schema.define(version: 2019_10_21_103834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,22 @@ ActiveRecord::Schema.define(version: 2019_10_09_055515) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["employee_id"], name: "index_educational_credentials_on_employee_id"
+  end
+
+  create_table "email_employee_notifications", force: :cascade do |t|
+    t.bigint "employee_id"
+    t.bigint "email_notification_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email_notification_id"], name: "index_email_employee_notifications_on_email_notification_id"
+    t.index ["employee_id"], name: "index_email_employee_notifications_on_employee_id"
+  end
+
+  create_table "email_notifications", force: :cascade do |t|
+    t.string "subject"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "employee_grades", force: :cascade do |t|
@@ -116,6 +132,8 @@ ActiveRecord::Schema.define(version: 2019_10_09_055515) do
 
   add_foreign_key "bank_details", "employees"
   add_foreign_key "educational_credentials", "employees"
+  add_foreign_key "email_employee_notifications", "email_notifications"
+  add_foreign_key "email_employee_notifications", "employees"
   add_foreign_key "employee_relatives", "employees"
   add_foreign_key "employees", "departments"
   add_foreign_key "employees", "employee_grades"
