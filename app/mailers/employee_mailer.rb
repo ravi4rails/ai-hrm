@@ -21,10 +21,10 @@ class EmployeeMailer < ApplicationMailer
     mail(to: @subordinate.email, subject: 'Manager has assigned successfully')  
   end  
 
-  def email_notification(subject, description, email)
+  def email_notification(email_notification, email)
     @email = email
-    @subject = subject
-    @description = description
-    mail(to: @email, subject: @subject)
+    @email_notification = email_notification
+    attachments[File.basename(@email_notification.attachment.to_s)] = File.read(Rails.root.to_s+ "/public"+@email_notification.attachment_url.to_s)    
+    mail(to: @email, subject: @email_notification.subject)    
   end
 end

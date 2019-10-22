@@ -17,7 +17,7 @@ class Admin::EmailNotificationsController < AdminController
       @email_ids = params[:email_notification][:employee_ids].reject { |e| e.to_s.empty? }
       @email_ids.each do |id|
         @email = Employee.find(id).email
-        EmployeeMailer.email_notification(params[:email_notification][:subject], params[:email_notification][:description], @email).deliver_now
+        EmployeeMailer.email_notification(@email_notification, @email).deliver_now
       end
      redirect_to admin_email_notification_path(@email_notification), notice: "Email Notification has been created successfully."
     else
@@ -44,7 +44,7 @@ class Admin::EmailNotificationsController < AdminController
     end
 
     def email_notification_params
-      params.require(:email_notification).permit!
+      params.require(:email_notification).permit(:subject, :description, :attachment, :employee_ids)
     end
 
 end

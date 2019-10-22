@@ -72,4 +72,5 @@ gem 'wicked'
 gem 'letter_opener', :group => :development
 gem 'letter_opener_web'
 gem 'kaminari'
+gem 'carrierwave'
 gem 'bootstrap4-kaminari-views'
