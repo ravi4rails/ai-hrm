@@ -34,7 +34,7 @@
     </div> 
 
     <div class="form-group col-md-6">
-      <%= form.select(:employee_ids, Employee.all.map {|p| [p.name, p.id] }, { :prompt => "Please select"},  { :multiple => true})  %>
+      <%= form.select :employee_ids, options_for_select(Employee.all.map {|employee| [employee.name, employee.id]}, selected: form.object.try(:employee)), { include_blank: "Select Employee" }, { class: "form-control js-example-basic-multiple", multiple: true } %>
     </div>    
   </div>
 
@@ -44,3 +44,10 @@
   </div>
  
 <% end %>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.js-example-basic-multiple').select2({
+      placeholder: "select employee"
+    });
+});
+</script>
