@@ -60,6 +60,17 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
+
+  ActionMailer::Base.smtp_settings = {
+    :user_name => Rails.application.credentials[:sendgrid_username],
+    :password => Rails.application.credentials[:sendgrid_password],  
+    :domain => 'gmail.com',
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
+
 end

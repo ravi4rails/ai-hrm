@@ -82,7 +82,7 @@ Rails.application.configure do
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
-  config.action_mailer.default_url_options = { host: 'hr-mental.herokuapp.com'}
+
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
@@ -90,8 +90,19 @@ Rails.application.configure do
   end
 
   # Do not dump schema after migrations.
+  config.action_mailer.default_url_options = { host: 'hr-mental.herokuapp.com'}
   config.active_record.dump_schema_after_migration = false
-  config.action_mailer.delivery_method = :letter_opener_web
-  config.action_mailer.perform_deliveries = true 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+
+  ActionMailer::Base.smtp_settings = {
+    :user_name => Rails.application.credentials[:sendgrid_username],
+    :password => Rails.application.credentials[:sendgrid_password],  
+    :domain => 'gmail.com',
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
 
 end
