@@ -6,7 +6,7 @@ class Admin::EmployeeStepsController < AdminController
     @employee = current_employee
     if params[:id] == "wicked_finish"
       EmployeeMailer.current_user_email(current_admin).deliver_now
-      redirect_to admin_employee_path(@employee), notice: "Employee was successfully created "
+      redirect_to admin_employee_path(@employee), notice: "Profile photo successfully created "
     else
       render_wizard
     end  
@@ -16,13 +16,13 @@ class Admin::EmployeeStepsController < AdminController
     @employee = current_employee
     @employee.update(employee_params)
     if params[:id] == "basic_profile"
-      render_wizard @employee, notice: 'Basic profile was successfully  created.'
+      render_wizard @employee, notice: 'Basic profile successfully  created.'
     elsif params[:id] == "address"
-      render_wizard @employee, notice: 'Address was successfully created.'  
+      render_wizard @employee, notice: 'Address successfully created.'  
     elsif params[:id] == "about_job"
-      render_wizard @employee, notice: 'About job was successfully created.'
+      render_wizard @employee, notice: 'About job successfully created.'
     elsif params[:id] == "info"
-      render_wizard @employee, notice: 'Employee was successfully created.'
+      render_wizard @employee, notice: 'Employee successfully created.'
     end     
   end 
 
